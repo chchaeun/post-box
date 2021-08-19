@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { dbService } from 'fBase';
+import Tweet from 'components/Tweet';
+
 const Home = ({userObj}) =>{
 
     const [tweet, setTweet] = useState("");
@@ -9,10 +11,10 @@ const Home = ({userObj}) =>{
         dbService.collection("tweets").onSnapshot(snapshot=>{
             const tweetArr = snapshot.docs.map(doc => ({
                 ...doc.data(),
-                id: doc.id
-            }))
+                id: doc.id,
+            }));
             setTweets(tweetArr);
-        })
+        });
     }, [])
 
     const onChange = (e) =>{
@@ -24,7 +26,7 @@ const Home = ({userObj}) =>{
         await dbService.collection("tweets").add({
             text: tweet,
             createdAt: Date.now(),
-            id: userObj.uid
+            creatorId: userObj.uid
         })
         setTweet("");
     }
@@ -36,9 +38,9 @@ const Home = ({userObj}) =>{
             </form>
             <div>
             {tweets.map(tweet=>(
-                <div key={tweet.id}>
-                    <h4>{tweet.text}</h4>
-                </div>
+                <Tweet key={tweet.id} 
+                tweetObj={tweet} 
+                isOwner={userObj.uid === tweet.creatorId}/>
             ))}
             </div>
         </div>
