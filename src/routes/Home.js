@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
-import { dbService } from 'fBase';
+import { dbService, storageService } from 'fBase';
 import Tweet from 'components/Tweet';
+import { v4 as uuidv4 } from "uuid";
 
 const Home = ({userObj}) =>{
 
@@ -24,13 +25,25 @@ const Home = ({userObj}) =>{
     }
     const onSubmit = async(e) =>{
         e.preventDefault();
-        await dbService.collection("tweets").add({
+
+        let attachmentUrl = "";
+        if(attachment){
+            const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+            const response = await fileRef.putString(attachment, "data_url");
+            attachmentUrl = await response.ref.getDownloadURL();
+        }
+        
+        const tweetObj = {
             text: tweet,
             createdAt: Date.now(),
-            creatorId: userObj.uid
-        })
+            creatorId: userObj.uid,
+            attachmentUrl
+        }
+        await dbService.collection("tweets").add(tweetObj);
         setTweet("");
+        setAttachment("");
     }
+
     const onFileChange = (event) =>{
         const {
             target: {files}
@@ -44,18 +57,18 @@ const Home = ({userObj}) =>{
         reader.readAsDataURL(theFile);
 
     }
-    const onAttachment = () =>{
+    const onAttachmentClear = () =>{
         setAttachment(null);
     }
     return (
         <div>
             <form onSubmit={onSubmit}>
                 <input onChange={onChange} value={tweet} type="text" placeholder="What's happening?" maxLength={150}/>
-                <input type="file" accept="image/*" onChange={onFileChange}/>
+                <input id="input-image" value="" type="file" accept="image/*" onChange={onFileChange} />
                 {attachment && 
                 <div>
                     <img src={attachment} width="50px" height="50px"/>
-                    <button onClick={onAttachment}>Clear</button>
+                    <button onClick={onAttachmentClear}>Clear</button>
                 </div>}
                 <input type="submit" value="Tweet"/>
             </form>
