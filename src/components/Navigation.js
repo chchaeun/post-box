@@ -1,4 +1,4 @@
-const Navigation = () =>{
+const Navigation = ({userObj}) =>{
 
     return (
         <>
@@ -8,7 +8,7 @@ const Navigation = () =>{
                         <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="/profile">Profile</a>
+                        <a href="/profile">{userObj.displayName}'s Profile</a>
                     </li>
                 </ul>
             </nav>
