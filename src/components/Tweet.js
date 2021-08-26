@@ -3,19 +3,21 @@ import React, {useState} from "react";
 
 const Tweet = ({tweetObj, isOwner}) =>{
 
+    const domain = window.location.pathname.split('/')[1];
+
     const [editing, setEditing] = useState(false);
     const [newTweet, setNewTweet] = useState(tweetObj.text);
     const onDeleteClick = async() =>{
         const ok = window.confirm("Are you sure?");
         if(ok){
-            await dbService.doc(`tweets/${tweetObj.id}`).delete();
+            await dbService.doc(`${domain}/${tweetObj.id}`).delete();
             await storageService.refFromURL(`${tweetObj.attachmentUrl}`).delete();
         }
     }
 
     const onSubmit = async(e) =>{
         e.preventDefault();
-        await dbService.doc(`tweets/${tweetObj.id}`).update({
+        await dbService.doc(`${domain}/${tweetObj.id}`).update({
             text: newTweet
         })
         setEditing(false);

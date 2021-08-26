@@ -13,6 +13,8 @@ function App() {
           displayName:user.displayName,
           updateProfile: (args) => user.updateProfile(args),
         });
+      }else{
+        setUserObj(null);
       }
       setInit(true);
     })
@@ -27,6 +29,7 @@ function App() {
     })
   }
 
+  
   return (
     <>
       {init? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj}/>:"Loading..."}

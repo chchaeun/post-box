@@ -9,6 +9,7 @@ const Profile = ({userObj, refreshUser}) => {
       authService.signOut();
       history.push("/");
     };
+
     const onChange = (event)=>{
       const {target: {value}} = event;
       setNewDisplayName(value);
@@ -36,8 +37,8 @@ const Profile = ({userObj, refreshUser}) => {
       getMyTweet();
     }, [])
     return (
-      <div onSubmit={onSubmit}>
-        <form>
+      <div>
+        <form onSubmit={onSubmit}>
           <input type="text" placeholder="Display name" value={newDisplayName} onChange={onChange}/>
           <input type="submit"/>
         </form>
