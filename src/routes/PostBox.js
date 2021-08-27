@@ -3,6 +3,10 @@ import { dbService, storageService } from 'fBase';
 import Tweet from 'components/Tweet';
 import TweetFactory from 'components/TweetFactory';
 import {useLocation} from 'react-router-dom'
+
+import 'bootstrap/dist/css/bootstrap.css';
+import 'styles/PostBox.css'
+
 const PostBox = ({userObj}) =>{
 
     const [tweets, setTweets] = useState([]);
@@ -22,18 +26,10 @@ const PostBox = ({userObj}) =>{
         });
     }, [])
 
-    const onShareClick = ()=>{
-        const copyText = document.getElementById("copy");
-        copyText.select();
-        document.execCommand("Copy");
-        alert("클립보드에 복사되었습니다.")
-    }
     return (
         <div>
-            <input style={{"display":"None"}} id="copy" value={userObj.uid}/>
-            <button onClick={onShareClick}>Share my Post Box ID</button>
             <TweetFactory userObj={userObj} pageOwner={pageOwner}/>
-            <div>
+            <div id="posts">
             {tweets.map(tweet=>(
                 <Tweet key={tweet.id} 
                 tweetObj={tweet} 

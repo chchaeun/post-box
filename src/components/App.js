@@ -33,7 +33,6 @@ function App() {
   return (
     <>
       {init? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj}/>:"Loading..."}
-      <footer>&copy; {new Date().getFullYear()} Cwitter</footer>
     </>
   );
 }

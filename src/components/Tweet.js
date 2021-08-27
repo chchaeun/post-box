@@ -1,6 +1,7 @@
 import { dbService, storageService } from "fBase";
 import React, {useState} from "react";
-
+import 'bootstrap/dist/css/bootstrap.css';
+import 'styles/PostBox.css'
 const Tweet = ({tweetObj, isOwner}) =>{
 
     const domain = window.location.pathname.split('/')[1];
@@ -8,7 +9,7 @@ const Tweet = ({tweetObj, isOwner}) =>{
     const [editing, setEditing] = useState(false);
     const [newTweet, setNewTweet] = useState(tweetObj.text);
     const onDeleteClick = async() =>{
-        const ok = window.confirm("Are you sure?");
+        const ok = window.confirm("정말 지우시겠습니까?");
         if(ok){
             await dbService.doc(`${domain}/${tweetObj.id}`).delete();
             await storageService.refFromURL(`${tweetObj.attachmentUrl}`).delete();
@@ -30,31 +31,33 @@ const Tweet = ({tweetObj, isOwner}) =>{
 
     const toggleEditing = () => setEditing(prev=>!prev);
     return(
-        <div>
+        <div id="post-obj">
         { editing ? (
             <>
             <form onSubmit={onSubmit}>
                 <input type="text"
                 onChange={onChange}
-                placeholder="Edit your tweet"
                 value={newTweet}
                 required
+                id="edit-form"
                 />
-                <input type="submit"
-                value="Update"
+                <input className="btn buttons" type="submit"
+                value="이렇게 보내기"
                 />
             </form>
-            <button onClick={toggleEditing}>Cancel</button>
+            <button className="btn buttons" onClick={toggleEditing} >취소하고 그대로</button>
             </>
             ):(
             <div>
-                <h4>{tweetObj.text}</h4>
+                <div width="400px" style={{"word-break":"break-all"}}>{tweetObj.text}</div>
                 {tweetObj.attachmentUrl && 
                 <img src={tweetObj.attachmentUrl} width="50px" height="50px"/>}
                 {isOwner && 
                 <>
-                    <button onClick={onDeleteClick}>Delete Tweet</button>
-                    <button onClick={toggleEditing}>Edit Tweet</button>
+                    <button className="btn buttons" 
+                    onClick={toggleEditing}>고치기</button>
+                    <button className="btn buttons"
+                    onClick={onDeleteClick}>지우기</button>
                 </>}
             </div>
             )

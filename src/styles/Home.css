@@ -1,28 +1,88 @@
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Nanum+Myeongjo&display=swap&subset=korean'); 
-html{
-    max-width: 400px;
-}
 
 body { 
     font-family: 'Nanum Gothic', serif !important; 
-    position: absolute;
-    top: 30%;
+}
+label{
+
     left: 50%;
-    transform: translate(-50%, -50%);
+    margin: 10px !important;
+    color: rgb(90, 90, 90) !important;
+
 }
 
-input{
-    text-align: center;
+
+#friend-form{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%);
 }
-
-.container {
-    width: 100%;
-    max-width: 320px;
-    display: flex;
-    flex-direction: column;
-  }
-
 .form-control{
-    width: 100% !important;
-    display: inline-block !important;
+    position:absolute;
+    left: 25%;
+    transform: translate(-50%);
+}
+
+#friend-submit{
+    position: absolute ;
+    left: 104% ;
+    top: 100%;
+    transform: translate(-50%) ;
+
+}
+
+#my-box{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%);
+    border:none !important;
+    background-color: white;
+    color:rgb(90, 90, 90);
+}
+#my-box:hover{
+    color:rgb(46, 46, 46);
+}
+
+li{
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+}
+
+ul{
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%);
+
+}
+ol, ul {
+    padding-left: 0 !important;
+}
+
+#icon{
+    margin-right: 5px;
+    margin-bottom: 3px;
+}
+
+a:link,
+a:visited{
+    text-decoration: none !important;
+    color: rgb(90, 90, 90) !important;
+}
+
+a:hover{
+    
+    color: rgb(46, 46, 46) !important;
+    text-decoration: none !important;
+}
+
+h2{
+    color: rgb(90, 90, 90) !important;
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%);
 }
