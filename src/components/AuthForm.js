@@ -1,6 +1,7 @@
 import { authService } from 'fBase';
 import react, {useState} from 'react'
 
+import 'styles/Auth.css'
 
 const AuthForm = () =>{
     const [email, setEmail] = useState("");
@@ -41,27 +42,30 @@ const AuthForm = () =>{
     }
     
     return(<>
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className="form-group">
                 <input 
                     type="text"
                     name="email"
-                    placeholder="Email"
+                    placeholder="이메일"
                     value={email}
                     onChange={onChange}
                     required
+                    className="form-control login-input"
+                    
                     />
                 <input 
                     type="password"
                     name="password"
-                    placeholder="Password"
+                    placeholder="비밀번호"
                     value={password}
                     onChange={onChange}
                     required
+                    className="form-control password-input"
                     />
-                <input type="submit" value={newAccount ? "Create Account" : "Log In"}/>
+                <input id="submit-btn" className="btn btn-outline-secondary" type="submit" value={newAccount ? "회원가입" : "로그인"}/>
             </form>
-            <span onClick={toggleAccount}>
-                {newAccount ? "Log In" : "Create Account"}
+            <span className="toggle" onClick={toggleAccount}>
+                {newAccount ? "로그인 하기" : "가입 하기"}
             </span>
             {error}
 

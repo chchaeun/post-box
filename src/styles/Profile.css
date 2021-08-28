@@ -1,0 +1,54 @@
+.change-form{
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%);
+}
+
+.change-form span{
+    padding-left: 50px;
+}
+
+.btn-outline-secondary{
+    left: 0%;
+    position: relative;
+    top: 37px;
+}
+
+#change-name {
+    position: absolute;
+    left: 35%;
+    transform: translate(-50%);
+    width: 70%;
+}
+
+.share{
+    position: absolute;
+    left: 50%;
+    top: 53%;
+    transform: translate(-50%);
+
+}
+
+#copy{
+    position: absolute;
+    left: 50%;
+    top:60%;
+    transform: translate(-50%);
+    width: 60%;
+}
+
+#copy-btn{
+    left: 50%;
+    position: absolute;
+    top: 70%;
+    transform: translate(-50%);
+
+}
+
+#logout{
+    left: 84%;
+    position: absolute;
+    top: 84%;
+    transform: translate(-50%);
+}

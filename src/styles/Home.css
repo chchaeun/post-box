@@ -3,7 +3,7 @@
 body { 
     font-family: 'Nanum Gothic', serif !important; 
 }
-label{
+#friend-form label{
 
     left: 50%;
     margin: 10px !important;
