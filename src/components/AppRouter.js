@@ -8,7 +8,7 @@ import PostBox from 'routes/PostBox';
 
 const AppRouter = ({refreshUser, isLoggedIn, userObj}) =>{
     return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       {isLoggedIn && <Navigation userObj={userObj}/>}
       <Switch>
         <Route exact path="/">{isLoggedIn ? <Home userObj={userObj}/>:<Auth/>}</Route>
