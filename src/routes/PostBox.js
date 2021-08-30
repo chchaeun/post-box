@@ -34,7 +34,7 @@ const PostBox = ({userObj}) =>{
             {tweets.map(tweet=>(
                 <Tweet key={tweet.id} 
                 tweetObj={tweet} 
-                isOwner={userObj.uid === tweet.creatorId}/>
+                isOwner={userObj.uid === tweet.creatorId || userObj.uid===pageOwner}/>
             ))}
             </div>
         </div>

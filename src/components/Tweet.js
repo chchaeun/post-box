@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'styles/PostBox.css'
 const Tweet = ({tweetObj, isOwner}) =>{
 
-    const domain = window.location.pathname.split('/')[1];
+    const domain = window.location.pathname.split('/')[2];
 
     const [editing, setEditing] = useState(false);
     const [newTweet, setNewTweet] = useState(tweetObj.text);
