@@ -8,8 +8,7 @@
 ## Result
 ### Screen
 모바일 최적화 웹
-![screen](https://user-images.githubusercontent.com/85024598/131287694-2ec2d7fc-3ce1-40a8-b57e-3523441b9415.png)
-![image](https://user-images.githubusercontent.com/85024598/131288394-a2f5f68c-c3cf-4cea-a90f-f19924b44784.png)
+![image](https://user-images.githubusercontent.com/85024598/131287694-2ec2d7fc-3ce1-40a8-b57e-3523441b9415.png)
 
 ### Feature
 - 코드를 통해 친구의 Post-box 방문
