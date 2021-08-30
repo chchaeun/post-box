@@ -10,10 +10,12 @@ import 'styles/PostBox.css'
 const PostBox = ({userObj}) =>{
 
     const [tweets, setTweets] = useState([]);
-    const [pageOwner, setPageOwner] = useState(window.location.pathname.split('/')[1]);
+    const [pageOwner, setPageOwner] = useState(window.location.pathname.split('/')[2]);
 
     useEffect(() => {
-        setPageOwner(window.location.pathname.split('/')[1]);
+        setPageOwner(window.location.pathname.split('/')[2]);
+        const header = document.querySelector(".head");
+        header.classList.add('hidden');
     }, [window.location.pathname])
 
     useEffect(()=>{
@@ -28,6 +30,7 @@ const PostBox = ({userObj}) =>{
 
     return (
         <div>
+            <h2>{userObj.displayName}의 Post-box</h2>
             <TweetFactory userObj={userObj} pageOwner={pageOwner}/>
             <div id="posts">
             {tweets.map(tweet=>(

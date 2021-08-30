@@ -17,7 +17,11 @@ const Home = ({userObj})=>{
 
     const onSubmit= (event)=>{
         event.preventDefault();
-        history.push(`/${friendId}`);
+        if(friendId.includes('http')){
+            history.push(friendId);
+        }else{
+            history.push(`/post-box/${friendId}`);
+        }
     }
 
     const onMyPost = ()=>{
@@ -38,7 +42,7 @@ const Home = ({userObj})=>{
                 type="text" 
                 value={friendId} 
                 onChange={onChange}
-                placeholder="코드 입력"/>
+                placeholder="코드 또는 주소 입력"/>
                 <input id="friend-submit" type="submit" value="방문하기" 
                 className="btn btn-outline-secondary"/>
             </form>

@@ -3,6 +3,11 @@
 body { 
     font-family: 'Nanum Gothic', serif !important; 
 }
+
+.hidden{
+    display: none;
+}
+
 #friend-form label{
 
     left: 50%;
