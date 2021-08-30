@@ -54,7 +54,7 @@ const Profile = ({userObj, refreshUser}) => {
           <input className="btn btn-outline-secondary" type="submit"/>
         </form>
         <span className="share">내 우편함 공유하기</span>
-        <input className="form-control" style={{"display":"block"}} id="copy" value={`${document.location.origin}/${userObj.uid}`}/>
+        <input className="form-control" style={{"display":"block"}} id="copy" value={`${document.location.origin}/post-box/${userObj.uid}`}/>
         <button className="btn btn-outline-secondary" id="copy-btn" onClick={onShareClick}>주소 복사</button>
 
         <button id="logout" className="btn btn-outline-secondary" onClick={onLogOutClick}>로그아웃</button>

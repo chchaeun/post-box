@@ -17,7 +17,7 @@ const Navigation = ({userObj}) =>{
     }
     return (
         <>
-            <h2 className="head">Post-Box</h2>
+        <h2>Post-Box</h2>
             <nav>
                 <ul>
                     <li>

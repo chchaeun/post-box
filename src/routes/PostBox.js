@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { dbService, storageService } from 'fBase';
+import { dbService, storageService, authService } from 'fBase';
 import Tweet from 'components/Tweet';
 import TweetFactory from 'components/TweetFactory';
 import {useLocation} from 'react-router-dom'
@@ -11,11 +11,10 @@ const PostBox = ({userObj}) =>{
 
     const [tweets, setTweets] = useState([]);
     const [pageOwner, setPageOwner] = useState(window.location.pathname.split('/')[2]);
+    const [ownerName, setOwnerName] = useState();
 
     useEffect(() => {
         setPageOwner(window.location.pathname.split('/')[2]);
-        const header = document.querySelector(".head");
-        header.classList.add('hidden');
     }, [window.location.pathname])
 
     useEffect(()=>{
@@ -30,7 +29,6 @@ const PostBox = ({userObj}) =>{
 
     return (
         <div>
-            <h2>{userObj.displayName}의 Post-box</h2>
             <TweetFactory userObj={userObj} pageOwner={pageOwner}/>
             <div id="posts">
             {tweets.map(tweet=>(
